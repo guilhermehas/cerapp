@@ -1,0 +1,91 @@
+<form name="userForm" class="form-horizontal" ng-submit="submitForm()" novalidate>
+    
+    <!-- email field -->
+    <div class="form-group" ng-class="{ 'has-error': userForm.email.$touched && userForm.email.$invalid }">
+        <label class="control-label" for="email">Email:</label>
+
+            <input type="email" name="email" placeholder="Digite seu email" class="form-control"
+                ng-model="main.email"
+                ng-minlength="5"
+                ng-maxlength="200"
+                required />
+                
+            <!-- ngMessages goes here -->
+            <div ng-messages="userForm.email.$error">
+                <p ng-message="minlength">Seu email é muito curto.</p>
+                <p ng-message="maxlength">Seu email é muito longo.</p>
+                <p ng-message="required">Seu email é necessário.</p>
+            </div>
+
+    </div>
+
+    <div class="form-group" ng-class="{ 'has-error':
+        userForm.nomeOficial.$touched && userForm.nomeOficial.$invalid }">
+        <label class="control-label" for="nomeOficial">Nome Oficial:</label>
+
+            <input type="text" name="nomeOficial" placeholder="Digite o nome oficial" class="form-control" 
+                ng-model="main.nomeOficial"
+                ng-minlength="5"
+                ng-maxlength="200"
+                required />
+                
+            <!-- ngMessages goes here -->
+            <div ng-messages="userForm.nomeOficial.$error">
+                <p ng-message="minlength">Nome Oficial é muito curto.</p>
+                <p ng-message="maxlength">Nome Oficial é muito longo.</p>
+                <p ng-message="required">Nome oficial é necessário.</p>
+            </div>
+
+    </div>
+
+    <div class="form-group" ng-class="{ 'has-error':
+        userForm.nomeComercial.$touched && userForm.nomeComercial.$invalid }">
+        <label class="control-label" for="nomeComercial">Nome Comercial:</label>
+
+            <input type="text" name="nomeComercial" placeholder="Digite o nome comercial" class="form-control" 
+                ng-model="main.nomeComercial"
+                ng-minlength="5"
+                ng-maxlength="200"
+                required />
+                
+            <!-- ngMessages goes here -->
+            <div ng-messages="userForm.nomeComercial.$error">
+                <p ng-message="minlength">Nome comercial é muito curto.</p>
+                <p ng-message="maxlength">Nome comercial é muito longo.</p>
+                <p ng-message="required">Nome comercial é necessário.</p>
+            </div>
+
+    </div>
+
+    <div class="form-group" ng-class="{ 'has-error': userForm.cnpj.$touched &&
+        userForm.cnpj.$invalid }">
+        <label class="control-label" for="cnpj">CNPJ:</label>
+
+            <input type="text" name="cnpj" placeholder="Digite seu CNPJ" class="form-control" 
+                ng-model="main.cnpj"
+                clean="true"
+                mask="99.999.999/9999-99"
+                required />
+                
+            <!-- ngMessages goes here -->
+            <div ng-messages="userForm.cnpj.$error">
+                <p ng-message="cnpj">CNPJ inválido</p>
+                <p ng-message="required">Seu CNPJ é necessário.</p>
+            </div>
+
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary"
+            ng-class="{ 'btn-danger disabled': userForm.$invalid }">
+             Modificar</button>
+        <button type="button" class="btn btn-danger" ng-click="deletar()">
+            Deletar</button>
+    </div>
+    
+    
+    
+</form>
+
+
+

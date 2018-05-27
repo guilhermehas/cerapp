@@ -1,0 +1,45 @@
+<form name="userForm" class="form-horizontal" ng-submit="submitForm()" novalidate>
+    
+    <!-- email field -->
+    <div class="form-group" ng-class="{ 'has-error': userForm.email.$touched && userForm.email.$invalid }">
+        <label class="control-label" for="email">Email:</label>
+
+            <input type="email" name="email" placeholder="Digite seu email" class="form-control" 
+                ng-model="main.email"
+                ng-minlength="5"
+                ng-maxlength="200"
+                required />
+                
+            <!-- ngMessages goes here -->
+            <div ng-messages="userForm.email.$error">
+                <p ng-message="minlength">Seu email é muito curto.</p>
+                <p ng-message="maxlength">Seu email é muito longo.</p>
+                <p ng-message="required">Seu email é necessário.</p>
+            </div>
+
+    </div>
+
+    <div class="form-group" ng-class="{ 'has-error': userForm.senha.$touched
+        && userForm.senha.$invalid }">
+
+          <label class="control-label" for="senha">Senha:</label>
+
+            <input type="password" name="senha" class="form-control" placeholder="Digite sua senha"
+                ng-model="main.senha"
+                required />
+
+            <!-- ngMessages goes here -->
+            <div ng-messages="userForm.senha.$error">
+                 <p ng-message="required">Sua senha é necessaria</p>
+            </div>
+
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary"
+            ng-class="{ 'btn-danger disabled': userForm.$invalid }">
+             Entrar</button>
+    </div>
+    
+</form>
+

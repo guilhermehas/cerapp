@@ -1,0 +1,49 @@
+<form name="userForm" class="form-horizontal" ng-submit="submitForm()" novalidate>
+
+    <div class="form-group" ng-class="{ 'has-error': userForm.senha.$touched
+        && userForm.senha.$invalid }">
+
+          <label class="control-label" for="senha">Nova senha:</label>
+
+            <input type="password" name="senha" class="form-control" placeholder="Digite sua senha"
+                ng-model="main.senha"
+                ng-minlength="5"
+                ng-maxlength="20"
+                required />
+
+            <!-- ngMessages goes here -->
+            <div ng-messages="userForm.senha.$error"
+                 ng-if="userForm.senha.$dirty"
+                 class="help-block">
+                 <p ng-message="minlength">Sua senha é muito curta</p>
+                 <p ng-message="maxlength">Sua senha é muito grande</p>
+                 <p ng-message="required">Sua senha é necessaria</p>
+            </div>
+
+    </div>
+
+    <div class="form-group" ng-class="{ 'has-error': userForm.senhav.$touched
+        && userForm.senhav.$invalid }">
+
+          <label class="control-label" for="senhav">Confirme sua nova senha:</label>
+
+            <input type="password" name="senhav" class="form-control"
+            placeholder="Digite sua senha novamente"
+                ng-model="main.senhav"
+                compare-to="main.senha"
+                required />
+
+            <!-- ngMessages goes here -->
+            <div ng-messages="userForm.senhav.$error">
+                 <p ng-message="compareTo">Senhas não iguais</p>
+            </div>
+
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary"
+            ng-class="{ 'btn-danger disabled': userForm.$invalid }">
+             Alterar</button>
+    </div>
+    
+</form>

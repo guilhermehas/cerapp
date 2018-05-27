@@ -1,0 +1,57 @@
+'use strict';
+
+/* App Module */
+
+var app = angular.module('myApp', [
+    'ngRoute',
+    'appController',
+    'ngMessages',
+    'ngCpfCnpj',
+    'ngMask',
+	'ui.bootstrap'
+]);
+
+app.config(['$routeProvider',
+  function($routeProvider) {
+    $routeProvider.
+    when('/cerapp', {
+        templateUrl: 'partials/cerappindex.html',
+        controller: 'CerIndexCtrl'
+    }).
+    when('/criarestabelecimento', {
+        templateUrl: 'partials/criarEstabelecimento.html',
+        controller: 'CEstController'
+    }).
+      otherwise({
+        redirectTo: '/cerapp'
+      });
+  }]);
+
+
+app.run(function($rootScope) {
+    $rootScope.dic = {};
+    $rootScope.xxx = "mario";
+    $rootScope.setClass = function(pal){
+        if($rootScope.dic[pal])
+            return "active";
+    }
+})
+
+app.directive("compareTo", function() {
+    return {
+        require: "ngModel",
+        scope: {
+            otherModelValue: "=compareTo"
+        },
+        link: function(scope, element, attributes, ngModel) {
+
+            ngModel.$validators.compareTo = function(modelValue) {
+                return modelValue == scope.otherModelValue;
+            };
+
+            scope.$watch("otherModelValue", function() {
+                ngModel.$validate();
+            });
+        }
+    };
+});

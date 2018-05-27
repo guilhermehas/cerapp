@@ -1,0 +1,35 @@
+<h3>Cerveja</h3>
+<span>Encontre a cerveja mais próxima de sua casa</span>
+
+<form ng-submit="submitForm()">
+    <form-group> <list-cervejas model="cerveja.nome"> </list-cervejas> </form-group>
+    <form-group> Preço máximo: <input type="number" ng-model="cerveja.preco" step ="0.01"></input> </form-group>
+    <form-group> Distancia máxima: <input type="number" ng-model="cerveja.distancia" step ="1"></input> km </form-group>
+    <form-group> <button type="submit" class="btn btn-primary">Procurar</button> </form-group>
+</form>
+
+<table class="table table-hover table-bordered" ng-show="cervs.length">
+    <thead>
+      <tr>
+        <th>Cerveja</th>
+        <th>Preco</th>
+        <th>Estabelecimento</th>
+        <th>Distancia</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="cerv in cervs | orderBy:'nome'">
+        <td>{{cerv.nome}}</td>
+        <td>{{cerv.preco.toFixed(2)}}</td>
+        <td>{{cerv.estabelecimento}}</td>
+        <td>{{cerv.distancia}} km</td>
+      </tr>
+    </tbody>
+</table>
+
+<div ng-if="coords">
+    <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+        <ui-gmap-marker data-ng-repeat="marker in markers"
+        coords="marker" idKey="marker.id"></ui-gmap-marker>
+    </ui-gmap-google-map>
+</div>

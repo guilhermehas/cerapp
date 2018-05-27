@@ -1,0 +1,24 @@
+<table class="table table-hover table-bordered">
+    <thead>
+      <tr>
+        <th>Cerveja</th>
+        <th>Preco</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="cerv in cervs | orderBy:'nome'">
+        <td>{{cerv.nome}}</td>
+        <td>{{cerv.preco.toFixed(2)}}</td>
+        <td class="col-md-1">
+            <btn class="btn btn-danger" ng-click="remove(cerv)"> Remover </btn>
+        </td>
+      </tr>
+    </tbody>
+</table>
+
+<form ng-submit="submitForm()">
+    <form-group> <list-cervejas model="cerveja.nome"> </list-cervejas> </form-group>
+    <form-group> Preço: <input type="number" ng-model="cerveja.preco" step ="0.01"></input> </form-group>
+    <form-group> <button type="submit" class="btn btn-primary">Adicionar</button> </form-group>
+</form>

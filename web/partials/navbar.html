@@ -1,0 +1,51 @@
+<nav class="navbar navbar-inverse" role="navigation">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <div class="navbar-brand">Cervejas</div>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" collapse="navCollapsed">
+        <ul class="nav navbar-nav">
+          <li class="{{setClass('index')}}">
+            <a href="#/cerapp">Busque sua cerveja</a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown" dropdown="">
+            <a href="#" class="dropdown-toggle" dropdown-toggle=""
+                data-toggle="dropdown">Estabelecimento<b class="caret"></b>
+            </a>
+              
+            <ul class="dropdown-menu" role="menu"> 
+              <li class="{{setClass('cEst')}}" ng-if="!logado">
+              <a href="#/criarestabelecimento">Criar</a>
+              </li>
+              <li class="{{setClass('enEst')}}" ng-if="!logado">
+              <a href="#/entrarestabelecimento">Entrar</a>
+              </li> 
+            
+              <li class="{{setClass('edEst')}}" ng-if="logado">
+                <a href="#/editarestabelecimento">Editar</a>
+              </li>
+              <li class="{{setClass('ASEst')}}" ng-if="logado">
+                <a href="#/alterarsenha">Alterar Senha</a>
+              </li>
+              <li class="{{setClass('ACEst')}}" ng-if="logado">
+                <a href="#/adicionarcerveja">Adicionar Cerveja</a>
+              </li>
+              <li class="{{setClass('sEst')}}" ng-if="logado">
+                <a ng-click="sair()">Sair</a>
+              </li>
+             </ul>
+              
+          </li>
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+</nav>

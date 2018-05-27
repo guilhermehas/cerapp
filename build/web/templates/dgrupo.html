@@ -1,0 +1,8 @@
+<div class="form-group" ng-class="{ 'has-error': userForm[var].$touched
+    && userForm[var].$invalid }" >
+
+    <label class="control-label" for="{{var}}">{{label}}</label>
+    
+    <div ng-transclude></div>
+
+</div>

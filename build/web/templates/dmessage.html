@@ -1,0 +1,8 @@
+<div ng-messages="userForm.{{var}}.$error"
+    ng-if="userForm.{{var}}.$dirty"
+    class="help-block">
+    
+    <p ng-message="minlength">Sua senha é muito curta</p>
+    <p ng-message="maxlength">Sua senha é muito grande</p>
+    <p ng-message="required">Sua senha é necessaria</p>
+</div>

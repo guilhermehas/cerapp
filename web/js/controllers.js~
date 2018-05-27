@@ -1,0 +1,39 @@
+'use strict';
+
+/* Controllers */
+
+var appController = angular.module('appController', []);
+
+
+appController.controller('CerIndexCtrl', function($scope) {
+    $scope.items = [
+        "The first choice!",
+        "And another choice for you.",
+        "but wait! A third!"
+    ];
+  });
+
+var internal = angular.module('internal', ['internalController']);
+
+internal.config(['$routeProvider',
+  function($routeProvider) {
+    $routeProvider.
+			when('/cerapp', {
+				templateUrl: 'partials/navbar.html',
+        controller: 'CerIndexCtrl'
+			}).
+      otherwise({
+        redirectTo: '/cerapp'
+      });
+  }]);
+
+
+var internalController = angular.module('internalController', []);
+
+internalController.controller('CerIndexCtrl', function($scope) {
+    $scope.items = [
+        "The first choice!",
+        "And another choice for you.",
+        "but wait! A third!"
+    ];
+  });
